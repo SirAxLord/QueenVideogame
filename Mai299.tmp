@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://o61j0o1irsdt"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_3wn4d"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3wn4d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -276.0
+offset_right = 270.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoardGrid" type="GridContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(540, 540)
+layout_mode = 2
+columns = 9
+
+[node name="Validar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Validar"
+
+[node name="ResetButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Reiniciar Tablero"
+
+[node name="MapSelectorOptionButton" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Tiempo: 00:00 s"
+horizontal_alignment = 1
+
+[node name="PopupDialog" type="AcceptDialog" parent="."]
+title = "Notificación"
+size = Vector2i(170, 100)
+dialog_text = "\"Mensaje del juego\""
+
+[node name="GameTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="pressed" from="VBoxContainer/Validar" to="." method="_on_validar_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/MapSelectorOptionButton" to="." method="_on_map_selected"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

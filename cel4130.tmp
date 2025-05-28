@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://be3cx8usg7jsj"]
+
+[ext_resource type="Script" path="res://cell_button.gd" id="1_gwy5k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yesb1"]
+
+[node name="CellButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_yesb1")
+script = ExtResource("1_gwy5k")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
